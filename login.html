@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; text-align: center; padding: 50px; }
+        #login-box { width: 300px; margin: 0 auto; padding: 20px; background-color: #fff; border: 1px solid #ddd; }
+        #name-input { width: calc(100% - 22px); padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; }
+        #login-btn { padding: 10px 20px; background-color: #007bff; color: #fff; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div id="login-box">
+    <h1>تسجيل الدخول</h1>
+    <input type="text" id="name-input" placeholder="أدخل اسمك">
+    <button id="login-btn">دخول</button>
+</div>
+
+<!-- Firebase SDK -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyB-QvM-Jv-jYVofrjLMuC-3G0d2-k2Kj8c",
+        authDomain: "mad-001-1c092.firebaseapp.com",
+        databaseURL: "https://mad-001-1c092-default-rtdb.firebaseio.com",
+        projectId: "mad-001-1c092",
+        storageBucket: "mad-001-1c092.appspot.com",
+        messagingSenderId: "1074624518",
+        appId: "1:1074624518:web:7dfda5a67b71c44d82eb87",
+        measurementId: "G-MJTHQNH5SZ"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+
+    const nameInput = document.getElementById('name-input');
+    const loginBtn = document.getElementById('login-btn');
+
+    loginBtn.addEventListener('click', () => {
+        const username = nameInput.value;
+        if (username.trim() !== '') {
+            // Save username in localStorage
+            localStorage.setItem('username', username);
+            // Redirect to chat page
+            window.location.href = 'chat.html';
+        }
+    });
+</script>
+
+
+</body></html>
